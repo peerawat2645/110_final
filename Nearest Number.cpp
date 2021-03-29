@@ -1,23 +1,32 @@
 #include <stdio.h>
 
 int main(){
-	int n,i,k,max=0,j=0;
-	scanf("%d",&n);
-	int l[1001]={0};
-	int t[n];
-	for(i=0;i<n;i++){
-		scanf("%d",&k);
-		l[k]++;
+	int n,c,k,a,b=0,i,y=1,z;
+	int p[32750]={0};
+	scanf("%d %d",&n,&c);
+	a=n;
+	while(a!=0){
+		p[b]=a%10;
+		a/=10;
+		b++;
 	}
-	for(i=1;i<=1000;i++){
-		if(max<l[i]){
-			t[j]=i;
-			max=i;
-			j++;
-		}
-		
+	while(y){
+		n++;
+		b=0;
+		a=n;
+		while(a!=0){
+			p[b]=a%10;
+			a/=10;
+			if(c==p[b]){
+				z=n;
+				y=0;
+				break;
+			}
+				
+			b++;
+		}	
 	}
-	for(i=0;i<j;i++)
-		printf("%d ",t[i]);
+	printf("%d",z);
 	return 0;
 }
+	
