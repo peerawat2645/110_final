@@ -1,6 +1,6 @@
 #include <stdio.h>
 int magic(int n){
-	int i,j,s,e=0,k=0,t=0,u=0;
+	int i,j,s,e=0,k=0,t=0,u=0,c=0;;
 	int a[n][n];
 	printf("\n");
 	for(i=0;i<n;i++){
@@ -16,27 +16,29 @@ int magic(int n){
 		}
 	}
 	for(i=0;i<n;i++){
-		for(i=n-1;i>=0;i--){
-			u+=a[i][j];
+		for(j=0;j<n;j++){
+			if((i+j)==2){
+				u+=a[i][j];
+			}			
 		}
-		if(s==u)
-			k=1;
-		else{
-			k=0;
-			break;
-		}
-		u=0;
-		
 	}
+	if(s==u){
+		c++;
+	}
+	else
+		return 0;
+	
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
 			e+=a[i][j];
 		}
+		printf("%d",e);
 		if(s==e)
-			k=1;
+		{
+			c++;
+		}
 		else{
-			k=0;
-			break;
+			return 0;
 		}
 		e=0;
 	}
@@ -44,31 +46,35 @@ int magic(int n){
 		for(j=0;j<n;j++){
 			t+=a[j][i];
 		}
+		printf("%d",t);
 		if(s==t)
-			k=1;
+		{
+			c++;
+		}
 		else{
-			k=0;
-			break;
+			return 0;
 		}
 		t=0;
 	}
-	return k;
+	if(c==((n*2)+1))
+		return 1;
 }
 int main(){
-	int n,m,g,k[3],i;
-		scanf("%d %d %d",&n,&m,&g);
-	if(n<=20&&m<=20&&g<=20){
-		k[0]=magic(n);
-		k[1]=magic(m);
-		k[2]=magic(g);
-			
-		for(i=0;i<3;i++){
+	int n[3],m,g,k[3],i;
+	for(i-0;i<3;i++)
+		scanf("%d",&n[i]);	
+	for(i=0;i<3;i++){
+		if(n[i]<=20){
+			k[i]=magic(n[i]);
+		}
+	}
+	/*for(i=0;i<3;i++){
 			if(k[i]==1)
 				printf("no");
 			else
 				printf("yes");
 			printf("\n");
-		}
-	}
+	}*/
 	return 0;
 }
+
