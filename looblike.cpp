@@ -8,13 +8,13 @@ int main(){
 		int t[n];
 		for(i=0;i<n;i++){
 			scanf("%d",&k);
+			if(k>=1&&k<=10000)
 			l[k]++;
 			
 		}
-		
 		for(i=1;i<=1000;i++){
 			if(max<=l[i]){
-				if(l[i]>0){
+				if(l[i]>=0){
 					t[j]=i;
 					j++;
 				}
